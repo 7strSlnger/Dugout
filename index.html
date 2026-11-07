@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden Home Dugout | Sports Bar & Grill | Portland, OR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark:       #080c18;
+      --bg-mid:        #0f1623;
+      --bg-card:       #161d2e;
+      --bg-card-hover: #1e2740;
+      --amber:         #e59c20;
+      --amber-light:   #f8b84b;
+      --amber-dark:    #c47d0d;
+      --green:         #16a34a;
+      --green-light:   #22c55e;
+      --text:          #f1f5f9;
+      --text-muted:    #8898b3;
+      --text-dim:      #4a5568;
+      --border:        #1e2a3f;
+      --border-light:  #2a3755;
+      --radius:        10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 56px;
+      transition: all 0.35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(8, 12, 24, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 56px;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--amber);
+      background: rgba(229, 156, 32, 0.08);
+    }
+
+    .nav-links .nav-cta {
+      background: var(--amber);
+      color: #000 !important;
+      margin-left: 8px;
+      border-radius: 7px;
+      font-weight: 600;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--amber-light) !important;
+      color: #000 !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/photo-1485313260896-6e6edf486858-1920w.webp');
+      background-size: cover;
+      background-position: center top;
+      transform: scale(1.08);
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        170deg,
+        rgba(8, 12, 24, 0.55) 0%,
+        rgba(8, 12, 24, 0.80) 55%,
+        rgba(8, 12, 24, 0.97) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      padding: 0 24px;
+    }
+
+    .hero-logo {
+      width: 300px;
+      max-width: 70%;
+      margin-bottom: 36px;
+      filter: drop-shadow(0 4px 32px rgba(0,0,0,0.7));
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(241, 245, 249, 0.75);
+      margin-bottom: 36px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(8px);
+      padding: 9px 16px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green-light);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50%       { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--amber-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(229,156,32,0.45);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.28);
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 8px;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.09);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: scroll-bounce 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+      50%       { transform: translateX(-50%) translateY(10px); opacity: 1; }
+    }
+
+    .hero-scroll-cue svg {
+      width: 30px; height: 30px;
+      fill: none;
+      stroke: rgba(255,255,255,0.45);
+      stroke-width: 1.8;
+    }
+
+    /* =========================================================
+       STAT BAR
+    ========================================================= */
+    .stat-bar {
+      background: var(--bg-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+    }
+
+    .stat-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 36px 20px;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .stat:last-child { border-right: none; }
+    .stat:hover { background: rgba(229,156,32,0.04); }
+
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* =========================================================
+       SHARED SECTION STYLES
+    ========================================================= */
+    section { padding: 100px 48px; }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    .about { background: var(--bg-dark); }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-details {
+      margin-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+      width: 32px;
+      text-align: center;
+    }
+
+    .about-row strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .about-row a,
+    .about-row span {
+      font-size: 0.98rem;
+      color: var(--text);
+      text-decoration: none;
+      line-height: 1.55;
+    }
+
+    .about-row a:hover { color: var(--amber); }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .about-photo::before {
+      content: '';
+      position: absolute;
+      inset: -16px 16px 16px -16px;
+      border: 2px solid rgba(229,156,32,0.25);
+      border-radius: 12px;
+      z-index: -1;
+    }
+
+    /* =========================================================
+       SPORTS
+    ========================================================= */
+    .sports { background: var(--bg-mid); }
+
+    .sports-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .sports-header .section-sub { margin: 0 auto; }
+
+    .sports-logos-grid {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+    }
+
+    .sport-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .sport-card:hover {
+      border-color: var(--amber);
+      background: var(--bg-card-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(229,156,32,0.15);
+    }
+
+    .sport-card img {
+      max-width: 90px;
+      max-height: 56px;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .sports-info-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .sports-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+    }
+
+    .sports-info-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+
+    .sports-info-card p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       MENU
+    ========================================================= */
+    .menu-section { background: var(--bg-dark); }
+
+    .menu-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .menu-header .section-sub { margin: 0 auto; }
+
+    .menu-tabs-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 44px;
+    }
+
+    .menu-tab {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      position: relative;
+      bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .menu-tab:hover { color: var(--text); }
+
+    .menu-tab.active {
+      color: var(--amber);
+      border-bottom-color: var(--amber);
+    }
+
+    .menu-panel {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: panel-in 0.3s ease both;
+    }
+
+    .menu-panel.active { display: block; }
+
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--border);
+      gap: 1px;
+      margin-bottom: 20px;
+    }
+
+    .menu-cat {
+      grid-column: 1 / -1;
+      background: rgba(229,156,32,0.07);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .menu-item {
+      background: var(--bg-card);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 17px 24px;
+      transition: background 0.2s;
+    }
+
+    .menu-item:hover { background: var(--bg-card-hover); }
+
+    .menu-item-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .menu-item-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .menu-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--amber);
+      flex-shrink: 0;
+    }
+
+    .menu-note-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* =========================================================
+       HAPPY HOUR CALLOUT
+    ========================================================= */
+    .happy-hour-callout {
+      background: linear-gradient(135deg, #b86a00 0%, var(--amber) 50%, #f8c65a 100%);
+      padding: 88px 48px;
+      text-align: center;
+    }
+
+    .happy-hour-callout .section-label {
+      color: rgba(0,0,0,0.5);
+    }
+
+    .happy-hour-callout .section-title {
+      color: #000;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+    }
+
+    .happy-hour-callout p {
+      color: rgba(0,0,0,0.65);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.88);
+      color: var(--amber);
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-dark:hover {
+      background: #000;
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       EVENTS
+    ========================================================= */
+    .events { background: var(--bg-mid); }
+
+    .events-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .events-photo img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin-bottom: 36px;
+    }
+
+    .events-text .section-sub { margin-bottom: 28px; }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.975rem;
+      color: var(--text-muted);
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(229,156,32,0.1);
+      border: 1px solid rgba(229,156,32,0.4);
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-icon::after {
+      content: '';
+      width: 7px;
+      height: 4px;
+      border-left: 1.8px solid var(--amber);
+      border-bottom: 1.8px solid var(--amber);
+      transform: rotate(-45deg) translate(1px, -1px);
+    }
+
+    /* ---- Booking Form ---- */
+    .booking-form-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 40px 40px 36px;
+    }
+
+    .booking-form-wrap h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .booking-form-wrap > p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group label .req {
+      color: var(--amber);
+      margin-left: 2px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg-mid);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.925rem;
+      padding: 11px 14px;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238898b3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-dim); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(229,156,32,0.12);
+    }
+
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.5);
+      cursor: pointer;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--amber);
+      color: #000;
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .form-submit:hover:not(:disabled) {
+      background: var(--amber-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(229,156,32,0.35);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .form-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(0,0,0,0.3);
+      border-top-color: #000;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-feedback {
+      display: none;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    .form-feedback.success {
+      background: rgba(22,163,74,0.12);
+      border: 1px solid rgba(22,163,74,0.35);
+      color: #4ade80;
+    }
+
+    .form-feedback.error {
+      background: rgba(220,38,38,0.1);
+      border: 1px solid rgba(220,38,38,0.3);
+      color: #f87171;
+    }
+
+    /* =========================================================
+       GALLERY
+    ========================================================= */
+    .gallery { background: var(--bg-dark); padding-bottom: 0; }
+
+    .gallery-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .gallery-mosaic {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-rows: 310px 310px 310px;
+      gap: 5px;
+    }
+
+    .gal-item {
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .gal-item:first-child {
+      grid-row: 1 / 4;
+    }
+
+    .gal-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gal-item:hover img { transform: scale(1.06); }
+
+    .gal-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(229,156,32,0);
+      transition: background 0.3s;
+    }
+
+    .gal-item:hover::after { background: rgba(229,156,32,0.08); }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    .contact { background: var(--bg-mid); }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .section-sub { margin-bottom: 40px; }
+
+    .contact-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .contact-icon-wrap {
+      width: 44px;
+      height: 44px;
+      background: rgba(229,156,32,0.08);
+      border: 1px solid rgba(229,156,32,0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .contact-row-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .contact-row a,
+    .contact-row span {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.975rem;
+      line-height: 1.6;
+    }
+
+    .contact-row a:hover { color: var(--amber); }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .contact-map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 500px;
+      display: block;
+      border: none;
+      filter: grayscale(60%) invert(90%) hue-rotate(180deg);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: #050810;
+      border-top: 1px solid var(--border);
+      padding: 72px 48px 36px;
+    }
+
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    .footer-brand .footer-logo {
+      height: 46px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 290px;
+      margin-bottom: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .footer-social-icon:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+      background: rgba(229,156,32,0.08);
+    }
+
+    .footer-social-icon svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-col ul li a,
+    .footer-col ul li span {
+      color: rgba(241,245,249,0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--amber); }
+
+    .footer-sisters {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sister-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      padding: 12px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .sister-card:hover {
+      border-color: var(--amber);
+      opacity: 0.9;
+    }
+
+    .sister-card img {
+      height: 44px;
+      width: 100%;
+      object-fit: contain;
+      /* Black logos → white on dark bg */
+      filter: invert(1) brightness(0.85);
+      display: block;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .footer-bottom a {
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover { color: var(--amber); }
+
+    /* =========================================================
+       LIGHTBOX (simple)
+    ========================================================= */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover { color: var(--amber); }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 1100px) {
+      .sports-logos-grid { grid-template-columns: repeat(4, 1fr); }
+
+      .about-grid,
+      .events-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .about-photo { order: -1; }
+      .about-photo img { height: 380px; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+
+      .sports-info-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 24px; }
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 8, 16, 0.98);
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        z-index: 999;
+      }
+      .nav-links.open a { font-size: 22px; padding: 10px 20px; }
+
+      .hamburger { display: flex; }
+
+      .stat-bar { padding: 0 24px; }
+      .stat-bar-inner { grid-template-columns: repeat(3, 1fr); }
+      .stat:nth-child(3) { border-right: none; }
+      .stat:nth-child(4), .stat:nth-child(5) { border-top: 1px solid var(--border); }
+
+      .happy-hour-callout { padding: 72px 24px; }
+
+      .sports-logos-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .gallery-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px repeat(4, 200px);
+      }
+      .gal-item:first-child {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+      }
+
+      .menu-grid { grid-template-columns: 1fr; }
+
+      .booking-form-wrap { padding: 28px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-logo { width: 220px; }
+      .hero h1 { font-size: 2.4rem; }
+      .stat-bar-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(3) { border-right: 1px solid var(--border); }
+      .stat:nth-child(5) { grid-column: 1 / -1; border-right: none; }
+      .sports-logos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="images/Dugout_2021_Final+Lockup-Color-1920w.webp" alt="Garden Home Dugout">
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#sports">Sports</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact" class="nav-cta">Visit Us</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <img src="images/Dugout_2021_Final+Lockup-Color-1920w.webp" alt="Garden Home Dugout" class="hero-logo">
+    <h1>Your Neighborhood<br><em>Sports Headquarters</em></h1>
+    <p class="hero-sub">Cold drinks · Great food · Every game on. Portland's favorite sports bar.</p>
+
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-dot"></span> Open Today 9am – 2:30am</span>
+      <span class="badge">🍺 12 Beers on Tap</span>
+      <span class="badge">📺 14 HDTVs</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#menu" class="btn-gold">View Menu</a>
+      <a href="#contact" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+
+  <a href="#stats" class="hero-scroll-cue" aria-label="Scroll down">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+</section>
+
+
+<!-- ============================================================
+     STAT BAR
+============================================================ -->
+<div class="stat-bar" id="stats">
+  <div class="stat-bar-inner">
+    <div class="stat">
+      <div class="stat-num">14</div>
+      <div class="stat-label">HDTVs</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Beers on Tap</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Days a Week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">9am</div>
+      <div class="stat-label">Breakfast All Day</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2:30</div>
+      <div class="stat-label">Open Until</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="about" id="about">
+  <div class="about-grid">
+
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">The Place to Go<br>for Sports</h2>
+      <p class="section-sub">Garden Home Dugout is Portland's neighborhood destination for great food, cold drinks, and every game you can handle. Walk-ins always welcome — bring your friends, relax, and Game On!</p>
+
+      <div class="about-details">
+        <div class="about-row">
+          <div class="about-icon">📍</div>
+          <div>
+            <strong>Address</strong>
+            <a href="https://maps.google.com/?q=7380+SW+Garden+Home+Rd+Portland+OR+97223" target="_blank" rel="noopener">
+              7380 SW Garden Home Rd, Portland, OR 97223
+            </a>
+          </div>
+        </div>
+        <div class="about-row">
+          <div class="about-icon">🕐</div>
+          <div>
+            <strong>Hours</strong>
+            <span>Open 7 Days a Week &nbsp;·&nbsp; 9:00 AM – 2:30 AM</span>
+          </div>
+        </div>
+        <div class="about-row">
+          <div class="about-icon">🍺</div>
+          <div>
+            <strong>Happy Hour</strong>
+            <span>Monday – Friday &nbsp;·&nbsp; 3:00 PM – 6:00 PM</span>
+          </div>
+        </div>
+        <div class="about-row">
+          <div class="about-icon">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <a href="tel:+15032065385">(503) 206-5385</a>
+          </div>
+        </div>
+        <div class="about-row">
+          <div class="about-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:info@gardenhomedugout.com">info@gardenhomedugout.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-photo">
+      <img src="images/photo-1517927033932-b3d18e61fb3a-1920w.webp" alt="Inside Garden Home Dugout">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SPORTS
+============================================================ -->
+<section class="sports" id="sports">
+
+  <div class="sports-header">
+    <div class="section-label">Sports Packages</div>
+    <h2 class="section-title">Every Game, Every Sport</h2>
+    <p class="section-sub">We carry Comcast, DirecTV, plus the full MLB, NFL, NBA, PGA, and NASCAR packages. If it's on anywhere, it's on here.</p>
+  </div>
+
+  <div class="sports-logos-grid">
+    <div class="sport-card"><img src="images/MLB-Logo-1920w.webp"               alt="MLB"></div>
+    <div class="sport-card"><img src="images/NFL-Logo-1920w.webp"               alt="NFL"></div>
+    <div class="sport-card"><img src="images/NBA-Logo-1920w.png"                alt="NBA"></div>
+    <div class="sport-card"><img src="images/PGA-Logo-1920w.webp"               alt="PGA Tour"></div>
+    <div class="sport-card"><img src="images/NASCAR-Logo-5bf6fe35-1920w.webp"   alt="NASCAR"></div>
+    <div class="sport-card"><img src="images/VideoLottery-1920w.webp"           alt="Video Lottery"></div>
+    <div class="sport-card"><img src="images/usOpen.gif"                        alt="US Open"></div>
+  </div>
+
+  <div class="sports-info-row">
+    <div class="sports-info-card">
+      <h3>14 High-Definition TVs</h3>
+      <p>Screens cover every angle of the bar and dining room. No matter where you sit, you'll have an unobstructed view of the action.</p>
+    </div>
+    <div class="sports-info-card">
+      <h3>Premium Broadcast Packages</h3>
+      <p>Comcast, DirecTV, MLB Extra Innings, NFL Sunday Ticket, and more — we subscribe to every major package so you never miss a play.</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     MENU
+============================================================ -->
+<section class="menu-section" id="menu">
+
+  <div class="menu-header">
+    <div class="section-label">Food &amp; Drinks</div>
+    <h2 class="section-title">The Full Menu</h2>
+    <p class="section-sub">Breakfast served all day, a full bar with 12 taps, and something for every appetite.</p>
+  </div>
+
+  <div class="menu-tabs-wrap">
+    <button class="menu-tab active" data-panel="breakfast">Breakfast</button>
+    <button class="menu-tab" data-panel="starters">Starters</button>
+    <button class="menu-tab" data-panel="burgers">Burgers</button>
+    <button class="menu-tab" data-panel="handhelds">Handhelds</button>
+    <button class="menu-tab" data-panel="wings">Wings</button>
+    <button class="menu-tab" data-panel="pizza">Pizza</button>
+    <button class="menu-tab" data-panel="tacos">Tacos</button>
+    <button class="menu-tab" data-panel="mac">Mac &amp; Cheese</button>
+    <button class="menu-tab" data-panel="salads">Salads &amp; Soups</button>
+    <button class="menu-tab" data-panel="entrees">Entrees</button>
+  </div>
+
+  <!-- BREAKFAST -->
+  <div class="menu-panel active" id="panel-breakfast">
+    <div class="menu-grid">
+      <div class="menu-cat">Omelets &amp; Scrambles — served with hash browns &amp; toast</div>
+      <div class="menu-item"><div><div class="menu-item-name">Three Eggs &amp; Cheese</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Denver Style</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">California</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">The Italian</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Bacon, Shroom &amp; Swiss</div></div><div class="menu-price">$14</div></div>
+
+      <div class="menu-cat">Breakfast Entrees</div>
+      <div class="menu-item"><div><div class="menu-item-name">Dugout Breakfast</div></div><div class="menu-price">$8</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chicken &amp; Waffles</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Breakfast Sandwich</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Pancake or French Toast</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Biscuits &amp; Gravy</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chicken Fried Steak</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Breakfast Burrito</div></div><div class="menu-price">$14</div></div>
+
+      <div class="menu-cat">Breakfast Sides</div>
+      <div class="menu-item"><div><div class="menu-item-name">Bacon / Ham / Sausage</div></div><div class="menu-price">$4</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Hash Browns</div></div><div class="menu-price">$4</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Extra Egg</div></div><div class="menu-price">$2</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Country Gravy</div></div><div class="menu-price">$3</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Toast</div></div><div class="menu-price">$3</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Pancakes</div></div><div class="menu-price">$8</div></div>
+    </div>
+  </div>
+
+  <!-- STARTERS -->
+  <div class="menu-panel" id="panel-starters">
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">House-Made Mozzarella Sticks</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket Nachos</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Jalapeño Poppers</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Basket of Fries / Tots</div></div><div class="menu-price">$7</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Caprese Bites</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Nacho Cheese Fries / Tots</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Cheese Quesadilla</div></div><div class="menu-price">$10</div></div>
+
+      <div class="menu-cat">Sliders — Happy Hour Mon–Fri 3–6pm</div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Sliders</div>
+          <div class="menu-item-note">Regular $7 · Happy Hour $5</div>
+        </div>
+        <div class="menu-price">$7</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BURGERS -->
+  <div class="menu-panel" id="panel-burgers">
+    <div class="menu-grid">
+      <div class="menu-cat">Classic Burgers</div>
+      <div class="menu-item"><div><div class="menu-item-name">Cheeseburger</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Bacon Bleu</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Mushroom &amp; Swiss</div></div><div class="menu-price">$11</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Western Bacon</div></div><div class="menu-price">$12</div></div>
+
+      <div class="menu-cat">Smash Burgers</div>
+      <div class="menu-item"><div><div class="menu-item-name">Half Pound Cheeseburger</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Dugout Deluxe</div></div><div class="menu-price">$20</div></div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Extreme</div>
+          <div class="menu-item-note">Double patty</div>
+        </div>
+        <div class="menu-price">$24</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HANDHELDS -->
+  <div class="menu-panel" id="panel-handhelds">
+    <div class="menu-note-bar">Served with your choice of fries, tots, or coleslaw</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">Club</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">French Dip</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">BBQ Pulled Pork</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Fried Chicken</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Buffalo Chicken</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Italian</div></div><div class="menu-price">$16</div></div>
+    </div>
+  </div>
+
+  <!-- WINGS -->
+  <div class="menu-panel" id="panel-wings">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Wings — 10 Piece</div>
+          <div class="menu-item-note">Choose from 8 sauces: Buffalo · Teriyaki · BBQ · Garlic Parmesan · Honey Mustard · Thai Chili · Honey Sriracha · Dry Rub</div>
+        </div>
+        <div class="menu-price">$14</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIZZA -->
+  <div class="menu-panel" id="panel-pizza">
+    <div class="menu-note-bar">9" Hand-Tossed Personal Pizzas</div>
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">Cheese</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">BBQ Chicken</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Margherita</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Combo</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chicken Caprese</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Vegetarian</div></div><div class="menu-price">$16</div></div>
+    </div>
+  </div>
+
+  <!-- TACOS -->
+  <div class="menu-panel" id="panel-tacos">
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">Pulled Pork</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Pork Belly</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Hard Shell Beef / Chicken</div></div><div class="menu-price">$4</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Crispy Cheddar Pulled Pork</div></div><div class="menu-price">$7</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Crispy Cheddar Beef Brisket</div></div><div class="menu-price">$7</div></div>
+    </div>
+  </div>
+
+  <!-- MAC & CHEESE -->
+  <div class="menu-panel" id="panel-mac">
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">Baked Mac</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Dugout Mac</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Spicy Mac</div></div><div class="menu-price">$15</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chili Cheese Mac</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">BBQ Pulled Pork Mac</div></div><div class="menu-price">$16</div></div>
+    </div>
+  </div>
+
+  <!-- SALADS & SOUPS -->
+  <div class="menu-panel" id="panel-salads">
+    <div class="menu-grid">
+      <div class="menu-cat">Salads</div>
+      <div class="menu-item"><div><div class="menu-item-name">House Salad</div></div><div class="menu-price">$8</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Spinach Salad</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Taco Salad</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Crispy Chicken Salad</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Caesar Salad</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chef Salad</div></div><div class="menu-price">$16</div></div>
+
+      <div class="menu-cat">Soups</div>
+      <div class="menu-item"><div><div class="menu-item-name">Cup</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Bowl</div>
+          <div class="menu-item-note">With garlic bread</div>
+        </div>
+        <div class="menu-price">$10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTREES -->
+  <div class="menu-panel" id="panel-entrees">
+    <div class="menu-grid">
+      <div class="menu-item"><div><div class="menu-item-name">8oz NY Steak</div></div><div class="menu-price">$20</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Beer Battered Fish &amp; Chips</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chicken Strips</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item"><div><div class="menu-item-name">Chicken Enchiladas</div></div><div class="menu-price">$14</div></div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     HAPPY HOUR CALLOUT
+============================================================ -->
+<div class="happy-hour-callout">
+  <div class="container">
+    <div class="section-label">Don't Miss It</div>
+    <h2 class="section-title">Happy Hour</h2>
+    <p>Join us Monday through Friday, 3:00–6:00 PM for drink specials and discounted bites. Sliders just $5. The best way to end the workday.</p>
+    <a href="#contact" class="btn-dark">Plan Your Visit →</a>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EVENTS
+============================================================ -->
+<section class="events" id="events">
+  <div class="events-grid">
+
+    <!-- Left: photo + info -->
+    <div class="events-left">
+      <div class="events-photo">
+        <img src="images/photo-1485872299829-c673f5194813-1920w.jpg" alt="Private event at Garden Home Dugout">
+      </div>
+      <div class="section-label">Private Events</div>
+      <h2 class="section-title">Host Your<br>Next Event Here</h2>
+      <p class="section-sub">From game-day watch parties to company gatherings, our bar and patio are perfect for groups of all sizes. No rental fee — just food and beverage minimums.</p>
+      <ul class="checklist" style="margin-top:24px;">
+        <li><span class="check-icon"></span><span>No space rental fee</span></li>
+        <li><span class="check-icon"></span><span>Hosted or unhosted events available</span></li>
+        <li><span class="check-icon"></span><span>Buffet options with advance notice</span></li>
+        <li><span class="check-icon"></span><span>Patio &amp; full indoor space available</span></li>
+        <li><span class="check-icon"></span><span>Full bar access throughout your event</span></li>
+        <li><span class="check-icon"></span><span>All sports packages on during your event</span></li>
+      </ul>
+    </div>
+
+    <!-- Right: booking form -->
+    <div class="booking-form-wrap">
+      <h3>Book Now</h3>
+      <p>Fill out the form and we'll get back to you within one business day to confirm your reservation.</p>
+
+      <form id="event-form" name="event-booking" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="event-booking">
+        <p style="display:none;"><input name="bot-field"></p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ef-name">Name <span class="req">*</span></label>
+            <input id="ef-name" name="name" type="text" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="ef-phone">Phone <span class="req">*</span></label>
+            <input id="ef-phone" name="phone" type="tel" placeholder="(503) 555-0100" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ef-email">Email <span class="req">*</span></label>
+          <input id="ef-email" name="email" type="email" placeholder="jane@example.com" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ef-date">Event Date <span class="req">*</span></label>
+            <input id="ef-date" name="event_date" type="date" required>
+          </div>
+          <div class="form-group">
+            <label for="ef-guests">Guest Count <span class="req">*</span></label>
+            <select id="ef-guests" name="guest_count" required>
+              <option value="" disabled selected>Select range</option>
+              <option>Under 20</option>
+              <option>20 – 40</option>
+              <option>40 – 60</option>
+              <option>60 – 80</option>
+              <option>80+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ef-type">Event Type <span class="req">*</span></label>
+          <select id="ef-type" name="event_type" required>
+            <option value="" disabled selected>Select event type</option>
+            <option>Birthday Party</option>
+            <option>Sports Watch Party</option>
+            <option>Work / Company Event</option>
+            <option>Holiday Party</option>
+            <option>Bachelor / Bachelorette</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="ef-message">Additional Details</label>
+          <textarea id="ef-message" name="message" placeholder="Tell us anything else we should know — special requests, dietary needs, AV needs, etc."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="form-submit-btn">
+          <span id="form-btn-text">Send Booking Request</span>
+          <span class="form-spinner" id="form-spinner"></span>
+        </button>
+
+        <div class="form-feedback" id="form-feedback"></div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GALLERY
+============================================================ -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Gallery</div>
+    <h2 class="section-title">Life at the Dugout</h2>
+  </div>
+
+  <div class="gallery-mosaic">
+    <!-- Row 1–2: large left panel — replace with your own Dugout photo -->
+    <div class="gal-item">
+      <img src="images/photo-1517927033932-b3d18e61fb3a-1920w.webp" alt="Garden Home Dugout" data-lightbox>
+    </div>
+    <!-- Row 1: cols 2–3 -->
+    <div class="gal-item">
+      <img src="images/photo-1534463868211-1203a5c900a9-1920w.webp" alt="Food at the Dugout" data-lightbox>
+    </div>
+    <div class="gal-item">
+      <img src="images/photo-1540189549336-e6e99c3679fe-1920w.webp" alt="Fresh ingredients" data-lightbox>
+    </div>
+    <!-- Row 2: cols 2–3 -->
+    <div class="gal-item">
+      <img src="images/photo-1510067559750-c21e29b0a703-1920w.webp" alt="Game day at the Dugout" data-lightbox>
+    </div>
+    <!-- Row 3: full width, 3 cols -->
+    <div class="gal-item">
+      <img src="images/photo-1428660386617-8d277e7deaf2-1920w.webp" alt="Bar seating" data-lightbox>
+    </div>
+    <div class="gal-item">
+      <img src="images/e1c8be30-3e75-4c0a-bf67-91dd7a3f34dd-1920w.jpg" alt="Made from scratch" data-lightbox>
+    </div>
+    <div class="gal-item">
+      <img src="images/photo-1505666287802-931dc83948e9-1920w.jpg" alt="Sports action" data-lightbox>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Come Visit</h2>
+      <p class="section-sub">We're in the Garden Home neighborhood of Portland, open 7 days a week. Walk-ins always welcome.</p>
+
+      <div class="contact-rows">
+        <div class="contact-row">
+          <div class="contact-icon-wrap">📍</div>
+          <div>
+            <div class="contact-row-label">Address</div>
+            <a href="https://maps.google.com/?q=7380+SW+Garden+Home+Rd+Portland+OR+97223" target="_blank" rel="noopener">
+              7380 SW Garden Home Rd<br>Portland, OR 97223
+            </a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">📞</div>
+          <div>
+            <div class="contact-row-label">Phone</div>
+            <a href="tel:+15032065385">(503) 206-5385</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">✉️</div>
+          <div>
+            <div class="contact-row-label">Email</div>
+            <a href="mailto:info@gardenhomedugout.com">info@gardenhomedugout.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">🕐</div>
+          <div>
+            <div class="contact-row-label">Hours</div>
+            <span>Open 7 Days a Week<br>9:00 AM – 2:30 AM</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">🍺</div>
+          <div>
+            <div class="contact-row-label">Happy Hour</div>
+            <span>Monday – Friday, 3:00 – 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.facebook.com/GardenHomeDugout" class="social-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.yelp.com/biz/garden-home-dugout-portland" class="social-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21.111 18.226c-.141.969-2.119 3.483-3.029 3.847-.311.124-.611.094-.85-.09-.154-.12-.314-.365-2.447-3.827l-.633-1.032c-.21-.336-.161-.786.119-1.113a1.37 1.37 0 0 1 1.158-.459l1.215.123c3.908.396 4.17.467 4.33.611.254.223.293.531.137.94zM13.99 13.609c-.069.44-.437.792-.895.846l-1.21.146c-3.882.467-4.14.467-4.336.371-.3-.146-.448-.457-.417-.851.021-.285.878-2.146.878-2.146l.633-1.032c.21-.332.666-.498 1.065-.381.343.1.591.395 1.979 2.512.42.638.78 1.189.896 1.371.168.26.182.504.078.743-.061.141-.187.265-.351.335l.004.085c.098-.018.199-.018.299-.038.023 0 .045-.008.069-.011.013-.003.026-.005.039-.007l.269-.038zM4.419 15.57c.235.941 2.452 3.233 3.396 3.512.321.095.616.047.84-.134.149-.122.291-.368 2.231-3.937l.579-1.071c.192-.35.118-.799-.176-1.11a1.372 1.372 0 0 0-1.187-.369l-1.207.197c-3.879.636-4.137.717-4.284.871-.225.235-.244.544-.069.941l-.123.1zM8.004 10.278c.343.286.44.772.231 1.146-.067.12-.178.267-.307.428-.882 1.082-.936 1.1-1.09 1.17-.302.138-.613.077-.852-.163-.161-.163-.981-1.95-1.157-2.286l-.528-1.088c-.178-.365-.099-.812.198-1.09l.014-.012.013-.011c.254-.218.572-.262.952-.131.117.04.273.123.527.272l.979.572c.908.531 1.009.598 1.052.654a.98.98 0 0 1 .039.055l-.071.484zM13.47 8.77l-.104-1.218c-.333-3.909-.355-4.173-.248-4.374.163-.31.473-.45.874-.413.961.09 3.319 2.198 3.571 3.168.088.337.016.634-.199.845-.141.138-.386.264-4.019 1.858l-.073.032c-.062.028-.124.055-.186.079a1.37 1.37 0 0 1-.538.112 1.371 1.371 0 0 1-.929-.363c.134.038.267.062.4.062.166 0 .332-.033.489-.09.195-.07.369-.184.513-.334a1.36 1.36 0 0 0 .337-.535c.005-.013.009-.026.012-.04.051-.173.073-.354.064-.535l.036-.253z"/></svg>
+          Yelp
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-map-wrap">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-122.750%2C45.455%2C-122.710%2C45.475&layer=mapnik&marker=45.465%2C-122.730"
+        loading="lazy"
+        allowfullscreen
+        title="Garden Home Dugout on OpenStreetMap">
+      </iframe>
+      <a
+        href="https://maps.google.com/?q=7380+SW+Garden+Home+Rd+Portland+OR+97223"
+        target="_blank"
+        rel="noopener"
+        style="display:block; text-align:center; padding:12px 0; font-size:0.825rem; color:var(--text-muted); text-decoration:none; border-top:1px solid var(--border); transition:color 0.2s;"
+        onmouseover="this.style.color='var(--amber)'"
+        onmouseout="this.style.color='var(--text-muted)'"
+      >Open in Google Maps ↗</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img class="footer-logo" src="images/Dugout_2021_Final+Lockup-Color-1920w.webp" alt="Garden Home Dugout">
+      <p>Portland's neighborhood sports bar serving great food, cold drinks, and all the games you can handle — 7 days a week, breakfast through last call.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/GardenHomeDugout/" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.yelp.com/biz/garden-home-dugout-portland" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Yelp">
+          <svg viewBox="0 0 24 24"><path d="M20.16 12.73l-4.703 1.14c-.48.117-.79-.506-.437-.862l3.396-3.387a.826.826 0 00-.104-1.24 9.235 9.235 0 00-2.932-1.516.826.826 0 00-1.034.65L13.63 13.3c-.1.49-.773.49-.873 0L11.99 8.521a.826.826 0 00-1.034-.65 9.235 9.235 0 00-2.932 1.516.826.826 0 00-.104 1.24l3.396 3.387c.353.356.043.979-.437.862L6.176 13.74a.826.826 0 00-.988.72 9.223 9.223 0 00.351 3.355.826.826 0 001.172.498l4.286-2.19c.44-.225.906.223.681.663L9.49 20.5a.826.826 0 00.37 1.212 9.221 9.221 0 003.288.726.826.826 0 00.826-.826v-4.782c0-.49.676-.676.902-.244l2.19 4.286a.826.826 0 001.212.37 9.22 9.22 0 002.46-2.46.826.826 0 00-.224-1.137z"/></svg>
+        </a>
+        <a href="mailto:info@gardenhomedugout.com" class="footer-social-icon" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2l-8 5-8-5h16zm0 12H4V9l8 5 8-5v9z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#sports">Sports &amp; Games</a></li>
+        <li><a href="#menu">Full Menu</a></li>
+        <li><a href="#events">Private Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact &amp; Directions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><span>Open 7 Days a Week</span></li>
+        <li><span>9:00 AM – 2:30 AM</span></li>
+        <li><span style="margin-top:8px; display:block; opacity:0.4;">— Happy Hour —</span></li>
+        <li><span>Mon – Fri · 3–6 PM</span></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sister Locations</h4>
+      <div class="footer-sisters">
+        <a href="https://www.clubhouseportland.com/" class="sister-card" target="_blank" rel="noopener">
+          <img src="images/Clubhouse_2021_Final+Lockup-Black-1920w.png" alt="Clubhouse Portland">
+        </a>
+        <a href="https://www.bar3portland.com/" class="sister-card" target="_blank" rel="noopener">
+          <img src="images/Bar3_2021_Final+Lockup-Black-1920w.png" alt="Bar3 Portland">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Garden Home Dugout · All Rights Reserved</span>
+    <span>
+      7380 SW Garden Home Rd, Portland OR 97223 &nbsp;·&nbsp;
+      <a href="tel:+15032065385">(503) 206-5385</a>
+    </span>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script>
+  // --- Navbar scroll behavior ---
+  const navbar   = document.getElementById('navbar');
+  const heroBg   = document.getElementById('hero-bg');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 60);
+    if (y < window.innerHeight && heroBg) {
+      heroBg.style.transform = `scale(1.08) translateY(${y * 0.28}px)`;
+    }
+  }, { passive: true });
+
+  // --- Mobile menu ---
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // --- Menu tabs ---
+  document.querySelectorAll('.menu-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.getElementById('panel-' + tab.dataset.panel);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // --- Gallery lightbox ---
+  const lightbox      = document.getElementById('lightbox');
+  const lightboxImg   = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('[data-lightbox]').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // --- Event booking form (Formspree) ---
+  const eventForm    = document.getElementById('event-form');
+  const submitBtn    = document.getElementById('form-submit-btn');
+  const btnText      = document.getElementById('form-btn-text');
+  const spinner      = document.getElementById('form-spinner');
+  const feedback     = document.getElementById('form-feedback');
+
+  if (eventForm) {
+    // Set min date to today
+    const dateInput = document.getElementById('ef-date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+
+    eventForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic client-side validation
+      const required = eventForm.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) {
+          field.style.borderColor = '#f87171';
+          valid = false;
+        }
+      });
+      if (!valid) {
+        showFeedback('error', 'Please fill in all required fields.');
+        return;
+      }
+
+      // Submit
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending…';
+      spinner.style.display = 'block';
+      hideFeedback();
+
+      try {
+        const data = new FormData(eventForm);
+        const res  = await fetch('/', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body:    new URLSearchParams(data).toString()
+        });
+
+        if (res.ok) {
+          showFeedback('success', '✓ Your booking request was sent! We\'ll be in touch within one business day.');
+          eventForm.reset();
+        } else {
+          showFeedback('error', 'Something went wrong. Please try again or call us at (503) 206-5385.');
+        }
+      } catch {
+        showFeedback('error', 'Network error. Please check your connection or call us at (503) 206-5385.');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Booking Request';
+        spinner.style.display = 'none';
+      }
+    });
+  }
+
+  function showFeedback(type, msg) {
+    feedback.textContent = msg;
+    feedback.className = 'form-feedback ' + type;
+    feedback.style.display = 'block';
+  }
+
+  function hideFeedback() {
+    feedback.style.display = 'none';
+    feedback.className = 'form-feedback';
+  }
+</script>
+
+</body>
+</html>
