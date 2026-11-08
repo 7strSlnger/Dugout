@@ -678,6 +678,24 @@
       flex-shrink: 0;
     }
 
+    .menu-tooltip {
+      position: fixed;
+      z-index: 9999;
+      background: #0f172a;
+      border: 1px solid rgba(245,158,11,0.35);
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      padding: 10px 14px;
+      border-radius: 8px;
+      max-width: 260px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+    }
+    .menu-tooltip.visible { opacity: 1; }
+
     .menu-note-bar {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -1785,20 +1803,20 @@
   <div class="menu-panel active" id="panel-breakfast">
     <div class="menu-grid">
       <div class="menu-cat">Omelets &amp; Scrambles — served with hash browns &amp; toast</div>
-      <div class="menu-item"><div><div class="menu-item-name">Three Eggs &amp; Cheese</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Denver Style</div></div><div class="menu-price">$14</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">California</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">The Italian</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Bacon, Shroom &amp; Swiss</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="Three eggs scrambled with melted cheese"><div><div class="menu-item-name">Three Eggs &amp; Cheese</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Ham, peppers, onions & cheese"><div><div class="menu-item-name">Denver Style</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="Turkey, tomato, spinach, cheddar & avocado"><div><div class="menu-item-name">California</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Sausage, pepperoni, mushrooms, onions, peppers & cheese"><div><div class="menu-item-name">The Italian</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Bacon, mushrooms & Swiss cheese"><div><div class="menu-item-name">Bacon, Shroom &amp; Swiss</div></div><div class="menu-price">$14</div></div>
 
       <div class="menu-cat">Breakfast Entrees</div>
-      <div class="menu-item"><div><div class="menu-item-name">Dugout Breakfast</div></div><div class="menu-price">$8</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chicken &amp; Waffles</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Breakfast Sandwich</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Pancake or French Toast</div></div><div class="menu-price">$14</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Biscuits &amp; Gravy</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chicken Fried Steak</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Breakfast Burrito</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="2 eggs, toast & your choice of hash browns or fruit"><div><div class="menu-item-name">Dugout Breakfast</div></div><div class="menu-price">$8</div></div>
+      <div class="menu-item" data-tooltip="2 Belgian waffles, 2 hand-battered chicken breasts & 2 strips of bacon"><div><div class="menu-item-name">Chicken &amp; Waffles</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Your choice of sausage, bacon or ham with 2 eggs & cheddar"><div><div class="menu-item-name">Breakfast Sandwich</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="2 pancakes or French toast slices, 2 eggs & choice of meat"><div><div class="menu-item-name">Pancake or French Toast</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="1 biscuit smothered in sausage gravy, 2 eggs & choice of meat"><div><div class="menu-item-name">Biscuits &amp; Gravy</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Smothered in sausage gravy, served with 2 eggs, hash browns & toast"><div><div class="menu-item-name">Chicken Fried Steak</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Scrambled eggs, cheese & choice of meat in a flour tortilla"><div><div class="menu-item-name">Breakfast Burrito</div></div><div class="menu-price">$14</div></div>
 
       <div class="menu-cat">Breakfast Sides</div>
       <div class="menu-item"><div><div class="menu-item-name">Bacon / Ham / Sausage</div></div><div class="menu-price">$4</div></div>
@@ -1813,13 +1831,13 @@
   <!-- STARTERS -->
   <div class="menu-panel" id="panel-starters">
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">House-Made Mozzarella Sticks</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket Nachos</div></div><div class="menu-price">$14</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Jalapeño Poppers</div></div><div class="menu-price">$10</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Basket of Fries / Tots</div></div><div class="menu-price">$7</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Caprese Bites</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Nacho Cheese Fries / Tots</div></div><div class="menu-price">$10</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Cheese Quesadilla</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item" data-tooltip="House-made mozzarella sticks served with marinara sauce"><div><div class="menu-item-name">House-Made Mozzarella Sticks</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Brisket, red onions, jalapeños, guacamole, black beans, white Alabama BBQ sauce & salsa"><div><div class="menu-item-name">Beef Brisket Nachos</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="Cream cheese stuffed jalapeños, served with ranch"><div><div class="menu-item-name">Jalapeño Poppers</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item" data-tooltip="Your choice of fries or tots — add chili for $3"><div><div class="menu-item-name">Basket of Fries / Tots</div></div><div class="menu-price">$7</div></div>
+      <div class="menu-item" data-tooltip="Fresh mozzarella, tomato & basil with balsamic & olive oil"><div><div class="menu-item-name">Caprese Bites</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Fries or tots with nacho cheese & green onion, choice of taco beef or bacon"><div><div class="menu-item-name">Nacho Cheese Fries / Tots</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item" data-tooltip="Grilled flour tortilla with melted cheese — add chicken or pulled pork $5, brisket $6"><div><div class="menu-item-name">Cheese Quesadilla</div></div><div class="menu-price">$10</div></div>
 
       <div class="menu-cat">Sliders — Happy Hour Mon–Fri 3–6pm</div>
       <div class="menu-item">
@@ -1836,15 +1854,15 @@
   <div class="menu-panel" id="panel-burgers">
     <div class="menu-grid">
       <div class="menu-cat">Classic Burgers</div>
-      <div class="menu-item"><div><div class="menu-item-name">Cheeseburger</div></div><div class="menu-price">$10</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Bacon Bleu</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Mushroom &amp; Swiss</div></div><div class="menu-price">$11</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Western Bacon</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="American cheese, lettuce, onion, tomato, pickle & 1000 Island"><div><div class="menu-item-name">Cheeseburger</div></div><div class="menu-price">$10</div></div>
+      <div class="menu-item" data-tooltip="Bacon, grilled onions, bleu cheese, lettuce & 1000 Island"><div><div class="menu-item-name">Bacon Bleu</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Mushrooms, Swiss cheese, lettuce, onion, tomato, pickle & 1000 Island"><div><div class="menu-item-name">Mushroom &amp; Swiss</div></div><div class="menu-price">$11</div></div>
+      <div class="menu-item" data-tooltip="Bacon, cheddar, onion rings & house-made BBQ sauce"><div><div class="menu-item-name">Western Bacon</div></div><div class="menu-price">$12</div></div>
 
       <div class="menu-cat">Smash Burgers</div>
-      <div class="menu-item"><div><div class="menu-item-name">Half Pound Cheeseburger</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Dugout Deluxe</div></div><div class="menu-price">$20</div></div>
-      <div class="menu-item">
+      <div class="menu-item" data-tooltip="Half pound patty with lettuce, onions, tomato, pickles & 1000 Island"><div><div class="menu-item-name">Half Pound Cheeseburger</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="BBQ sauce, bacon & cheddar topped with a fried onion ring"><div><div class="menu-item-name">Dugout Deluxe</div></div><div class="menu-price">$20</div></div>
+      <div class="menu-item" data-tooltip="Two patties with bacon, ham, extra cheese & a fried egg">
         <div>
           <div class="menu-item-name">Extreme</div>
           <div class="menu-item-note">Double patty</div>
@@ -1858,13 +1876,13 @@
   <div class="menu-panel" id="panel-handhelds">
     <div class="menu-note-bar">Served with your choice of fries, tots, or coleslaw</div>
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">Club</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">French Dip</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">BBQ Pulled Pork</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Fried Chicken</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Buffalo Chicken</div></div><div class="menu-price">$18</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Italian</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Turkey, bacon, ham, cheddar, lettuce, tomato & onion on toasted sourdough"><div><div class="menu-item-name">Club</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Thin sliced roast beef & provolone on a hoagie roll with au jus"><div><div class="menu-item-name">French Dip</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Smoked brisket, cheddar, crispy fried onions, arugula & choice of BBQ sauce on brioche bun"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Slow cooked pulled pork with house-made BBQ sauce & coleslaw"><div><div class="menu-item-name">BBQ Pulled Pork</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Saka's buttermilk fried chicken with lettuce, tomato, pickle & mayo on brioche bun"><div><div class="menu-item-name">Fried Chicken</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Buttermilk fried chicken tossed in buffalo sauce with bleu cheese on brioche bun"><div><div class="menu-item-name">Buffalo Chicken</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item" data-tooltip="Salami, pepperoni, ham, sweet pickled peppers, provolone, lettuce, tomato, onion & mayo"><div><div class="menu-item-name">Italian</div></div><div class="menu-price">$16</div></div>
     </div>
   </div>
 
@@ -1885,35 +1903,35 @@
   <div class="menu-panel" id="panel-pizza">
     <div class="menu-note-bar">9" Hand-Tossed Personal Pizzas</div>
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">Cheese</div></div><div class="menu-price">$12</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">BBQ Chicken</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Margherita</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Combo</div></div><div class="menu-price">$18</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chicken Caprese</div></div><div class="menu-price">$18</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Vegetarian</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Red sauce & 3 melted cheeses"><div><div class="menu-item-name">Cheese</div></div><div class="menu-price">$12</div></div>
+      <div class="menu-item" data-tooltip="Sweet Baby Ray's BBQ sauce, grilled chicken with red & green onions"><div><div class="menu-item-name">BBQ Chicken</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Red sauce, basil, tomatoes, fresh mozzarella & parmesan"><div><div class="menu-item-name">Margherita</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Red sauce, pepperoni, sausage, mushrooms, peppers, onions & olives"><div><div class="menu-item-name">Combo</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item" data-tooltip="Garlic & olive oil, grilled chicken, fresh mozzarella, tomato & basil with balsamic glaze & parmesan"><div><div class="menu-item-name">Chicken Caprese</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item" data-tooltip="Red sauce, spinach, mushrooms, onions, peppers, olives & tomatoes"><div><div class="menu-item-name">Vegetarian</div></div><div class="menu-price">$16</div></div>
     </div>
   </div>
 
   <!-- TACOS -->
   <div class="menu-panel" id="panel-tacos">
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">Pulled Pork</div></div><div class="menu-price">$6</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$6</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Pork Belly</div></div><div class="menu-price">$6</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Hard Shell Beef / Chicken</div></div><div class="menu-price">$4</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Crispy Cheddar Pulled Pork</div></div><div class="menu-price">$7</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Crispy Cheddar Beef Brisket</div></div><div class="menu-price">$7</div></div>
+      <div class="menu-item" data-tooltip="Slow-smoked pulled pork with Sweet Baby Ray's BBQ, guacamole & pickled onions on flour tortilla"><div><div class="menu-item-name">Pulled Pork</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item" data-tooltip="Slow-smoked beef brisket with Sweet Baby Ray's BBQ, guacamole & pickled onions on flour tortilla"><div><div class="menu-item-name">Beef Brisket</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item" data-tooltip="Slow-smoked pork belly with Sweet Baby Ray's BBQ, guacamole & pickled onions on flour tortilla"><div><div class="menu-item-name">Pork Belly</div></div><div class="menu-price">$6</div></div>
+      <div class="menu-item" data-tooltip="Classic crunchy hard shell taco with your choice of seasoned beef or chicken"><div><div class="menu-item-name">Hard Shell Beef / Chicken</div></div><div class="menu-price">$4</div></div>
+      <div class="menu-item" data-tooltip="Cheddar grilled onto the tortilla with pulled pork & house BBQ, served with coleslaw"><div><div class="menu-item-name">Crispy Cheddar Pulled Pork</div></div><div class="menu-price">$7</div></div>
+      <div class="menu-item" data-tooltip="Cheddar grilled onto the tortilla with beef brisket, fried onions, guacamole & Alabama BBQ sauce"><div><div class="menu-item-name">Crispy Cheddar Beef Brisket</div></div><div class="menu-price">$7</div></div>
     </div>
   </div>
 
   <!-- MAC & CHEESE -->
   <div class="menu-panel" id="panel-mac">
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">Baked Mac</div></div><div class="menu-price">$14</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Dugout Mac</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Spicy Mac</div></div><div class="menu-price">$15</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chili Cheese Mac</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">BBQ Pulled Pork Mac</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Macaroni in a 3-cheese sauce, baked with a parmesan panko crust"><div><div class="menu-item-name">Baked Mac</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="Baked mac topped with diced ham, jalapeños & tomatoes"><div><div class="menu-item-name">Dugout Mac</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Signature mac with smoky chipotle seasonings for a kick of heat"><div><div class="menu-item-name">Spicy Mac</div></div><div class="menu-price">$15</div></div>
+      <div class="menu-item" data-tooltip="Creamy mac & cheese loaded with hearty chili"><div><div class="menu-item-name">Chili Cheese Mac</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Mac & cheese topped with slow-smoked mesquite BBQ pulled pork"><div><div class="menu-item-name">BBQ Pulled Pork Mac</div></div><div class="menu-price">$16</div></div>
     </div>
   </div>
 
@@ -1921,12 +1939,12 @@
   <div class="menu-panel" id="panel-salads">
     <div class="menu-grid">
       <div class="menu-cat">Salads</div>
-      <div class="menu-item"><div><div class="menu-item-name">House Salad</div></div><div class="menu-price">$8</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Spinach Salad</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Taco Salad</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Crispy Chicken Salad</div></div><div class="menu-price">$18</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Caesar Salad</div></div><div class="menu-price">$14</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chef Salad</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Romaine, carrots, tomatoes, cucumbers, sunflower seeds & house croutons"><div><div class="menu-item-name">House Salad</div></div><div class="menu-price">$8</div></div>
+      <div class="menu-item" data-tooltip="Spinach, bacon, egg, red onion, sunflower seeds & parmesan in balsamic vinaigrette"><div><div class="menu-item-name">Spinach Salad</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Refried beans, tomatoes, onions, olives, jalapeños & 3 cheeses with sour cream & salsa. Choice of beef or chicken"><div><div class="menu-item-name">Taco Salad</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Crispy chicken, cucumbers, tomatoes, onions & 3 cheeses on crisp romaine"><div><div class="menu-item-name">Crispy Chicken Salad</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item" data-tooltip="Crisp romaine, parmesan, house croutons & Caesar dressing. Add chicken $5"><div><div class="menu-item-name">Caesar Salad</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="Ham, turkey, egg, cucumbers, tomato, cheddar & Swiss cheeses"><div><div class="menu-item-name">Chef Salad</div></div><div class="menu-price">$16</div></div>
 
       <div class="menu-cat">Soups</div>
       <div class="menu-item"><div><div class="menu-item-name">Cup</div></div><div class="menu-price">$6</div></div>
@@ -1943,10 +1961,10 @@
   <!-- ENTREES -->
   <div class="menu-panel" id="panel-entrees">
     <div class="menu-grid">
-      <div class="menu-item"><div><div class="menu-item-name">8oz NY Steak</div></div><div class="menu-price">$20</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Beer Battered Fish &amp; Chips</div></div><div class="menu-price">$18</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chicken Strips</div></div><div class="menu-price">$16</div></div>
-      <div class="menu-item"><div><div class="menu-item-name">Chicken Enchiladas</div></div><div class="menu-price">$14</div></div>
+      <div class="menu-item" data-tooltip="8oz NY strip with cheesy garlic bread & your choice of side"><div><div class="menu-item-name">8oz NY Steak</div></div><div class="menu-price">$20</div></div>
+      <div class="menu-item" data-tooltip="Beer-battered fish served with chips, house-made slaw, tartar sauce & lemon"><div><div class="menu-item-name">Beer Battered Fish &amp; Chips</div></div><div class="menu-price">$18</div></div>
+      <div class="menu-item" data-tooltip="Hand-battered chicken strips with fries or tots & choice of dipping sauce"><div><div class="menu-item-name">Chicken Strips</div></div><div class="menu-price">$16</div></div>
+      <div class="menu-item" data-tooltip="Chicken enchiladas served with beans & tortilla chips"><div><div class="menu-item-name">Chicken Enchiladas</div></div><div class="menu-price">$14</div></div>
     </div>
   </div>
 
@@ -2380,6 +2398,24 @@
       navLinks.classList.remove('open');
       document.body.style.overflow = '';
     });
+  });
+
+  // --- Menu item tooltips ---
+  const tip = document.createElement('div');
+  tip.className = 'menu-tooltip';
+  document.body.appendChild(tip);
+  document.querySelectorAll('[data-tooltip]').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      tip.textContent = el.dataset.tooltip;
+      tip.classList.add('visible');
+    });
+    el.addEventListener('mousemove', e => {
+      const x = e.clientX + 16;
+      const y = e.clientY - 10;
+      tip.style.left = Math.min(x, window.innerWidth - 276) + 'px';
+      tip.style.top  = Math.max(y - tip.offsetHeight, 8) + 'px';
+    });
+    el.addEventListener('mouseleave', () => tip.classList.remove('visible'));
   });
 
   // --- Menu tabs ---
