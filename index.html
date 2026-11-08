@@ -483,7 +483,7 @@
       max-width: 1200px;
       margin: 0 auto 48px;
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 12px;
     }
 
@@ -517,7 +517,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -1285,7 +1285,8 @@
 
       .footer-top { grid-template-columns: 1fr 1fr; }
 
-      .sports-info-row { grid-template-columns: 1fr; }
+      .sports-info-row { grid-template-columns: 1fr 1fr; }
+      .sports-info-row .sports-info-card:last-child { grid-column: 1 / -1; }
     }
 
     @media (max-width: 768px) {
@@ -1510,7 +1511,6 @@
     <div class="sport-card"><img src="images/NBA-Logo-1920w.png"                alt="NBA"></div>
     <div class="sport-card"><img src="images/PGA-Logo-1920w.webp"               alt="PGA Tour"></div>
     <div class="sport-card"><img src="images/NASCAR-Logo-5bf6fe35-1920w.webp"   alt="NASCAR"></div>
-    <div class="sport-card"><img src="images/VideoLottery-1920w.webp"           alt="Video Lottery"></div>
     <div class="sport-card"><img src="images/usOpen.gif"                        alt="US Open"></div>
   </div>
 
@@ -1522,6 +1522,13 @@
     <div class="sports-info-card">
       <h3>Premium Broadcast Packages</h3>
       <p>Comcast, DirecTV, MLB Extra Innings, NFL Sunday Ticket, and more — we subscribe to every major package so you never miss a play.</p>
+    </div>
+    <div class="sports-info-card" style="display:flex; flex-direction:column; gap:16px;">
+      <img src="images/VideoLottery-1920w.webp" alt="Oregon Video Lottery" style="height:48px; object-fit:contain; align-self:flex-start;">
+      <div>
+        <h3>Oregon Video Lottery</h3>
+        <p>Try your luck on our Oregon Lottery terminals — available to players 21 and over during regular bar hours.</p>
+      </div>
     </div>
   </div>
 
