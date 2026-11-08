@@ -671,6 +671,230 @@
     }
 
     /* =========================================================
+       FAN FAVORITES
+    ========================================================= */
+    .fan-favorites {
+      background: var(--bg-mid);
+      padding: 100px 48px;
+    }
+
+    .fan-favorites-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .fan-favorites-header .section-sub { margin: 0 auto; }
+
+    .favorites-scroll-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .fav-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .fav-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--amber);
+      box-shadow: 0 10px 32px rgba(229,156,32,0.15);
+    }
+
+    .fav-card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .fav-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .fav-card:hover .fav-card-img img {
+      transform: scale(1.07);
+    }
+
+    .fav-card-body {
+      padding: 20px 22px 24px;
+    }
+
+    .fav-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+    }
+
+    .fav-card-body h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .fav-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--amber);
+    }
+
+    /* Mobile: horizontal scroll carousel */
+    @media (max-width: 900px) {
+      .favorites-scroll-wrap {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -48px;
+        margin-right: -48px;
+        padding-left: 48px;
+        padding-right: 48px;
+        scrollbar-width: none;
+      }
+      .favorites-scroll-wrap::-webkit-scrollbar { display: none; }
+
+      .favorites-grid {
+        display: flex;
+        width: max-content;
+        gap: 16px;
+        padding-right: 48px;
+      }
+
+      .fav-card {
+        scroll-snap-align: start;
+        width: 260px;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fan-favorites { padding: 72px 24px; }
+      .favorites-scroll-wrap {
+        margin-left: -24px;
+        margin-right: -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .favorites-grid { padding-right: 24px; }
+    }
+
+    /* =========================================================
+       TACO TUESDAY
+    ========================================================= */
+    .taco-tuesday {
+      background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 50%, #ef4444 100%);
+      padding: 88px 48px;
+      text-align: center;
+    }
+
+    .taco-tuesday .section-label { color: rgba(255,255,255,0.55); }
+
+    .taco-tuesday .section-title {
+      color: #fff;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 12px;
+    }
+
+    .taco-tuesday > .container > .tt-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      margin-bottom: 44px;
+    }
+
+    .tt-photo {
+      width: 100%;
+      max-width: 760px;
+      height: 340px;
+      object-fit: cover;
+      object-position: center 60%;
+      border-radius: 16px;
+      margin: 0 auto 44px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .tt-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .tt-card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 32px 28px;
+      text-align: left;
+    }
+
+    .tt-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .tt-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .tt-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .tt-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .tt-price span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      margin-left: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .taco-tuesday { padding: 72px 24px; }
+      .tt-cards { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
        HAPPY HOUR CALLOUT
     ========================================================= */
     .happy-hour-callout {
@@ -1523,8 +1747,8 @@
       <h3>Premium Broadcast Packages</h3>
       <p>Comcast, DirecTV, MLB Extra Innings, NFL Sunday Ticket, and more — we subscribe to every major package so you never miss a play.</p>
     </div>
-    <div class="sports-info-card" style="display:flex; flex-direction:column; gap:16px;">
-      <img src="images/VideoLottery-1920w.webp" alt="Oregon Video Lottery" style="height:48px; object-fit:contain; align-self:flex-start;">
+    <div class="sports-info-card" style="display:flex; flex-direction:row; align-items:flex-start; gap:20px;">
+      <img src="images/VideoLottery-1920w.webp" alt="Oregon Video Lottery" style="height:52px; object-fit:contain; flex-shrink:0; margin-top:2px;">
       <div>
         <h3>Oregon Video Lottery</h3>
         <p>Try your luck on our Oregon Lottery terminals — available to players 21 and over during regular bar hours.</p>
@@ -1732,6 +1956,67 @@
 
 
 <!-- ============================================================
+     FAN FAVORITES
+============================================================ -->
+<div class="fan-favorites">
+  <div class="fan-favorites-header">
+    <div class="section-label">Fan Favorites</div>
+    <h2 class="section-title">What to Order</h2>
+    <p class="section-sub">The dishes regulars keep coming back for.</p>
+  </div>
+  <div class="favorites-scroll-wrap">
+    <div class="favorites-grid">
+
+      <div class="fav-card">
+        <div class="fav-card-img">
+          <img src="images/photo-1534463868211-1203a5c900a9-1920w.webp" alt="Beef Brisket Nachos">
+        </div>
+        <div class="fav-card-body">
+          <span class="fav-tag">Starter</span>
+          <h3>Beef Brisket Nachos</h3>
+          <div class="fav-price">$14</div>
+        </div>
+      </div>
+
+      <div class="fav-card">
+        <div class="fav-card-img">
+          <img src="images/photo-1540189549336-e6e99c3679fe-1920w.webp" alt="Dugout Deluxe Burger">
+        </div>
+        <div class="fav-card-body">
+          <span class="fav-tag">Smash Burger</span>
+          <h3>Dugout Deluxe</h3>
+          <div class="fav-price">$20</div>
+        </div>
+      </div>
+
+      <div class="fav-card">
+        <div class="fav-card-img">
+          <img src="images/e1c8be30-3e75-4c0a-bf67-91dd7a3f34dd-1920w.jpg" alt="Wings">
+        </div>
+        <div class="fav-card-body">
+          <span class="fav-tag">Wings</span>
+          <h3>Wings — 10 Piece</h3>
+          <div class="fav-price">$14</div>
+        </div>
+      </div>
+
+      <div class="fav-card">
+        <div class="fav-card-img">
+          <img src="images/photo-1428660386617-8d277e7deaf2-1920w.webp" alt="BBQ Pulled Pork Mac">
+        </div>
+        <div class="fav-card-body">
+          <span class="fav-tag">Mac &amp; Cheese</span>
+          <h3>BBQ Pulled Pork Mac</h3>
+          <div class="fav-price">$16</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
      HAPPY HOUR CALLOUT
 ============================================================ -->
 <div class="happy-hour-callout">
@@ -1740,6 +2025,36 @@
     <h2 class="section-title">Happy Hour</h2>
     <p>Join us Monday through Friday, 3:00–6:00 PM for drink specials and discounted bites. Sliders just $5. The best way to end the workday.</p>
     <a href="#contact" class="btn-dark">Plan Your Visit →</a>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     TACO TUESDAY
+============================================================ -->
+<div class="taco-tuesday">
+  <div class="container">
+    <div class="section-label">Every Tuesday</div>
+    <h2 class="section-title">Taco Tuesday</h2>
+    <p class="tt-sub">The best deal in the neighborhood, every single week.</p>
+    <img class="tt-photo" src="images/10390254_1092339297473210_5150008930883603930_n-1438w.webp" alt="Taco Tuesday spread at Garden Home Dugout">
+    <div class="tt-cards">
+
+      <div class="tt-card">
+        <span class="tt-card-label">Regular Tacos</span>
+        <h3>Pulled Pork · Beef Brisket · Pork Belly · Hard Shell</h3>
+        <p>Your choice of any regular taco — all night long.</p>
+        <div class="tt-price">$2.50 <span>/ taco</span></div>
+      </div>
+
+      <div class="tt-card">
+        <span class="tt-card-label">Weekly Featured Special</span>
+        <h3>Chef's Featured Taco</h3>
+        <p>A rotating special creation from our kitchen. Price announced the day of — follow us on Facebook to find out!</p>
+        <div class="tt-price" style="font-size:1.1rem; color:rgba(255,255,255,0.75);">Price announced<br>day of</div>
+      </div>
+
+    </div>
   </div>
 </div>
 
