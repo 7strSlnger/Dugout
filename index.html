@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(location.pathname.replace(/\/+$/,"")==="/dugout"&&!location.pathname.endsWith("/"))location.replace("/dugout/"+location.search+location.hash);</script>
   <title>Garden Home Dugout | Sports Bar & Grill | Portland, OR</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -2590,7 +2591,7 @@
 
       try {
         const data = new FormData(eventForm);
-        const res  = await fetch('/', {
+        const res  = await fetch(location.pathname, {
           method:  'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body:    new URLSearchParams(data).toString()
